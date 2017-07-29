@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
-import TopicStore from './TopicStore';
-import TopicForm from './TopicForm';
-import TopicList from './TopicList';
+import AddTopic from '../../containers/AddTopic';
+import FilterTopics from '../../containers/FilterTopics';
 
 export default class Index extends Component {
 
-  store = new TopicStore();
-
-  save = (e) => {
-    this.store.addTopic(e);
-  }
+  topics = []
 
   render() {
     return (
       <div>
         <h1>Topic Index</h1>
 
-        <TopicForm onSubmit={this.save} />
-        <TopicList store={this.store} />
+        <AddTopic />
+        <FilterTopics />
       </div>);
   }
 }

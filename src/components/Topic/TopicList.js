@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TopicListItem from './TopicListItem';
-import TopicStore from './TopicStore';
 
 class TopicList extends Component {
   
   static propTypes = {
-    store: PropTypes.oneOfType(typeof(TopicStore)).isRequired
+    topics: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string
+    }).isRequired).isRequired
   }
 
   render() {
-    const topics = this.props.store.topics;
+    const topics = this.props.topics;
 
     return (
     <ul>
