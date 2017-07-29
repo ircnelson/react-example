@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
-
+import TopicStore from './TopicStore';
 import TopicForm from './TopicForm';
-import TopicListView from './TopicListView';
-import TopicListItem from './TopicListItem';
-
-const topics = [];
+import TopicList from './TopicList';
 
 export default class Index extends Component {
 
-  state = { topics }
+  store = new TopicStore();
 
   save = (e) => {
-    
-    topics.push(e)
-
-    this.setState(topics);
+    this.store.addTopic(e);
   }
 
   render() {
@@ -23,9 +17,7 @@ export default class Index extends Component {
         <h1>Topic Index</h1>
 
         <TopicForm onSubmit={this.save} />
-        <TopicListView>
-          {this.state.topics.map((topic, index) => <TopicListItem key={index} topic={topic} />)}
-        </TopicListView>
+        <TopicList store={this.store} />
       </div>);
   }
 }
